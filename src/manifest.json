@@ -1,0 +1,35 @@
+{
+  "name": "Video Translator",
+  "description" : "Video Translator Extension",
+  "version": "1.0.0",
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_icon": "assets/vt-enable.png"
+  },
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["js/content.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+  "options_page": "options.html",
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "MacCtrl+Shift+F"
+      },
+      "description": "Opens hello.html"
+    }
+  },
+  "permissions": [
+    "notifications",
+    "storage"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
